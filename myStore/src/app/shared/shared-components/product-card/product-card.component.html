@@ -1,0 +1,7 @@
+<div class="card">
+  <img (click)="productDetails($event)" [src]="imgSrc" alt="img" style="width:100%">
+  <h1>{{title}}</h1>
+  <p class="price">{{price}}</p>
+  <p>{{description}}</p>
+  <p><button (click)="addToCart($event)">Add to Cart</button></p>
+</div>

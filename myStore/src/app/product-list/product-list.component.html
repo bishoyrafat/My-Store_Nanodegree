@@ -1,0 +1,13 @@
+<div class="container">
+  <ng-container  *ngFor="let item of data">
+    <app-product-card
+    [imgSrc]="item.url"
+    [description]="item.description"
+    [price]="'$' +item.price"
+    [title]="item.name"
+    (cartBtn)="addToCArt(item.id)"
+    (ditails)="productDetails(item.id)"
+    ></app-product-card>
+  </ng-container>
+
+</div>
