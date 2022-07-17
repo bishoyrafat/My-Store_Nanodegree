@@ -5,6 +5,11 @@
   text-align: center;
   font-family: arial;
 }
+.container {
+  gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 
 .price {
   color: grey;

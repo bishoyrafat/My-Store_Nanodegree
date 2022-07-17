@@ -1,3 +1,4 @@
+import { SharedService } from './../shared/shared.service';
 import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -8,21 +9,27 @@ import { Router } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 data :any[]=[]
-  constructor(private productsService:ProductsService,
+cart:any[]=[]
+amountNo:any
+products=[]
+
+  constructor(private productsService:ProductsService,private sharedService:SharedService,
     private route :Router) { }
 
   ngOnInit(): void {
+    this.products = JSON.parse(localStorage.getItem('cart')!);
+    console.log(this.products);
     this.getAllProducts()
   }
 
-  addToCArt(productId:number){
-console.log(productId)
+  addToCArt(e:any){
+    console.log(e);
   }
 
-  productDetails(productId:number){
-    console.log(productId);
-    this.route.navigate(['/productdetail',productId])
+  productDetails(productId:any){
+    this.route.navigate(['/productdetail',productId.id])
   }
+
 
 getAllProducts(){
  this.data =  this.productsService.getAllProducts()

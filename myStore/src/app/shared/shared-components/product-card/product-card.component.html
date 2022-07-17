@@ -1,7 +1,16 @@
-<div class="card">
-  <img (click)="productDetails($event)" [src]="imgSrc" alt="img" style="width:100%">
-  <h1>{{title}}</h1>
-  <p class="price">{{price}}</p>
-  <p>{{description}}</p>
-  <p><button (click)="addToCart($event)">Add to Cart</button></p>
+<div class="container">
+  <div class="card" *ngFor="let item of data">
+  <img (click)="productDetails(item)" [src]="item.url" alt="img" style="width:100%">
+  <h1>{{item.name}}</h1>
+  <h1>{{item.title}}</h1>
+  <p class="price">${{item.price}}</p>
+  <p>{{item.description}}</p>
+  <form [formGroup]="form">
+    <select formControlName="selection"   >
+      <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
+    </select>
+  </form>
+  <p><button (click)="addToCart(item)">Add to Cart</button></p>
 </div>
+</div>
+

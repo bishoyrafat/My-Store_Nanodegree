@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
   product:any
+  options=[1,2,3,4,5,6,7,8,9]
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute

@@ -1,13 +1,9 @@
 <div class="container">
-  <ng-container  *ngFor="let item of data">
+  <ng-container >
     <app-product-card
-    [imgSrc]="item.url"
-    [description]="item.description"
-    [price]="'$' +item.price"
-    [title]="item.name"
-    (cartBtn)="addToCArt(item.id)"
-    (ditails)="productDetails(item.id)"
+    [data]="data"
+    (cartBtn)="addToCArt($event)"
+    (details)="productDetails($event)"
     ></app-product-card>
   </ng-container>
-
 </div>

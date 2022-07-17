@@ -4,6 +4,10 @@
     <h1>{{product.name}}</h1>
     <p class="price">${{product.price}}</p>
     <p>{{product.description}}</p>
+    <select name="" id="">
+      <option *ngFor="let option of options" [value]="option">{{option}}</option>
+    </select>
     <p><button>Add to Cart</button></p>
+    <a routerLink="/">&larr; Back to product list</a>
   </div>
 </div>
