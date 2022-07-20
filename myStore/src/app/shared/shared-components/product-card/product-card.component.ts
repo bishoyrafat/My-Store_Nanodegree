@@ -29,9 +29,7 @@ export class ProductCardComponent implements OnInit  {
   ngOnInit(): void {
   }
   addToCart(item:any){
-    // this.cartBtn.emit({product:item,amount:this.form.value.selection})
     this.cart.push({product:item,amount:this.form.value.selection})
-    // localStorage.setItem('cart',JSON.stringify(this.cart))
     this.sharedService.saveProduct(this.cart)
      this.sharedService.currentData.subscribe((e:any)=>{
       console.log(this.cart);

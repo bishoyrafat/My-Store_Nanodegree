@@ -1,5 +1,5 @@
 <div class="body">
-  <div class="card" *ngFor="let item of data">
+  <div class="carding" *ngFor="let item of data">
     <img
       (click)="productDetails(item)"
       [src]="item.url"
@@ -20,4 +20,31 @@
     <p><button (click)="addToCart(item)">Add to Cart</button></p>
   </div>
 </div>
+<!-- ***************************** -->
+<div class="body" style="width: 18rem;" class="card" >
+  <div class="carding" *ngFor="let item of data">
+    <img
+    (click)="productDetails(item)"
+    [src]="item.url"
+    alt="img"
+    style="width: 100%"
+  />  <div class="card-body">
+      <h3 class="card-title">{{ item.name }}</h3>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item price">{{ item.description }}</li>
+      <li class="list-group-item price">${{ item.price }}</li>
+      <form  class="list-group-item" [formGroup]="form">
+        <select formControlName="selection">
+          <option *ngFor="let option of options" [ngValue]="option">
+            {{ option }}
+          </option>
+        </select>
+      </form>
+    </ul>
+    <div class="card-body">
+      <button class="card-link">Add to Cart</button>
+    </div>
+  </div>
 
+</div>

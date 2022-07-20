@@ -1,18 +1,19 @@
-<!-- <div class="card">
-  <img [src]="product.url" alt="Denim Jeans" >
-  <div>
+<div class="body row">
+  <div class="col-6">
+    <img [src]="product.url" alt="Denim Jeans" class="float-right">
+  </div>
+  <div class="col-6">
     <h1>{{product.name}}</h1>
     <p class="price">${{product.price}}</p>
     <p>{{product.description}}</p>
     <select name="" id="">
       <option *ngFor="let option of options" [value]="option">{{option}}</option>
     </select>
-    <p><button>Add to Cart</button></p>
+    <p><button class="btn btn-primary mt-2">Add to Cart</button></p>
     <a routerLink="/">&larr; Back to product list</a>
   </div>
-</div> -->
-<app-product-card
+</div>
+
 [data]="data"
 (cartBtn)="addToCArt($event)"
 (details)="productDetails($event)"
-></app-product-card>
