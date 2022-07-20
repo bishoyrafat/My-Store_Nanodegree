@@ -17,8 +17,6 @@ products=[]
     private route :Router) { }
 
   ngOnInit(): void {
-    this.products = JSON.parse(localStorage.getItem('cart')!);
-    console.log(this.products);
     this.getAllProducts()
   }
 

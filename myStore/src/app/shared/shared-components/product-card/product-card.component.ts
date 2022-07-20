@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from '../../shared.service';
 
@@ -7,7 +7,7 @@ import { SharedService } from '../../shared.service';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent implements OnInit  {
   @Input() data:any[]=[]
   @Input() imgSrc=''
   @Input() title=''
@@ -33,10 +33,11 @@ export class ProductCardComponent implements OnInit {
     this.cart.push({product:item,amount:this.form.value.selection})
     // localStorage.setItem('cart',JSON.stringify(this.cart))
     this.sharedService.saveProduct(this.cart)
-    this.sharedService.currentData.subscribe((e:any)=>{
-      console.log(e);
+     this.sharedService.currentData.subscribe((e:any)=>{
+      console.log(this.cart);
     })
   }
+
   productDetails(e:any){
     this.details.emit(e)
   }

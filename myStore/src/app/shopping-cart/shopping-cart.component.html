@@ -1,11 +1,31 @@
-<div class="card" >
+<form [formGroup]="form" action="">
+<div class="card">
   <div class="product" *ngFor="let product of products">
-    <img [src]="product.product.url" alt="Denim Jeans" width="20%">
-    <h1>{{product.product.name}}</h1>
-    <p class="price">${{product.product.price *product.amount}}</p>
-    <p>{{product.product.description}}</p>
-    <input  type="number" [(ngModel)]="product.amount" min="0" (change)="getAllPrice()" >
+    <table>
+      <tr>
+        <td>
+          <img [src]="product.product.url" alt="Denim Jeans" width="20%" />
+        </td>
+        <td>
+          <h1>{{ product.product.name }}</h1>
+        </td>
+        <td>
+          <p class="price">${{ product.product.price * product.amount }}</p>
+        </td>
+        <td>
+          <p>{{ product.product.description }}</p>
+        </td>
+      </tr>
+    </table>
+      <input
+        type="number"
+        [(ngModel)]="product.amount"
+        formControlName="quantity"
+        min="0"
+        (change)="getAllPrice()"
+      />
+    </div>
   </div>
-</div>
-<h1>Total: {{amount}}</h1>
+</form>
+  <h1>Total: {{ amount }}</h1>
 <div>form</div>
