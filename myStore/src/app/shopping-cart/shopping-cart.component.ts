@@ -1,4 +1,5 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../shared/shared.service';
 
@@ -14,10 +15,17 @@ export class ShoppingCartComponent implements OnInit {
   form = new FormGroup({
     quantity:new FormControl()
   })
-  constructor(private sharedService:SharedService) {}
+
+  submitForm= new FormGroup({
+    name:new FormControl('',[Validators.required, Validators.minLength(3)]),
+    address:new FormControl('',[Validators.required,Validators.minLength(6)]),
+    credit:new FormControl('',[Validators.required,Validators.minLength(16)]),
+  })
+  constructor(private sharedService:SharedService,private route :Router) {}
 
   ngOnInit(): void {
-    // this.products = JSON.parse(localStorage.getItem('cart')!);
+    console.log(this.amount)
+    console.log(this.products)
     this.sharedService.currentData.subscribe((e:any)=>{
       console.log(e)
       this.products=e
@@ -33,6 +41,15 @@ export class ShoppingCartComponent implements OnInit {
       console.log(el.product.price,el.amount,this.form.value.quantity)
       this.amount += el.product.price * el.amount
     })
+}
+
+submit(){
+  console.log(this.submitForm.invalid)
+  if(this.submitForm.invalid) return
+  else{
+    console.log(this.submitForm.value)
+    this.route.navigate(['/confirmationmessage'],{queryParams:{price:this.amount}})
+  }
 }
 
 

@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
   <img [src]="product.url" alt="Denim Jeans" >
   <div>
     <h1>{{product.name}}</h1>
@@ -10,4 +10,9 @@
     <p><button>Add to Cart</button></p>
     <a routerLink="/">&larr; Back to product list</a>
   </div>
-</div>
+</div> -->
+<app-product-card
+[data]="data"
+(cartBtn)="addToCArt($event)"
+(details)="productDetails($event)"
+></app-product-card>

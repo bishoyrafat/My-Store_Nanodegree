@@ -1,11 +1,27 @@
-<div class="container">
-  <div>
-    My Store
-  </div>
+<div class="body">
+  <li>
+    <a routerLink="/productlist">
+      <div class="btn">My Store</div>
+    </a>
+  </li>
+
   <div>
     <ul>
-      <li><a routerLink="/productlist">Product list</a></li>
-      <li><a routerLink="/cart">Cart</a> <span class="fas fa-cart-shopping"></span></li>
+      <li class="btn btn-info">
+        <a routerLink="/productlist">Product list</a>
+      </li>
+      <li>
+        <a routerLink="/cart">
+          <button type="button" class="btn btn-primary position-relative">
+            Cart
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              {{ cartQuantity }}
+            </span>
+          </button>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
