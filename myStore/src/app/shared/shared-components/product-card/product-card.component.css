@@ -6,9 +6,11 @@
   font-family: arial;
 }
 .body {
-  gap: 50px;
+  gap: 20px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3,1fr);
+  justify-content: center;
+
 }
 
 .price {

@@ -1,4 +1,4 @@
-<div class="row">
+<div  *ngIf="amount !==0" class="row">
   <div class="col-6">
     <form [formGroup]="form" action="">
       <div class="card">
@@ -6,56 +6,80 @@
           <table>
             <tr>
               <td>
-                <img [src]="product.product.url" alt="Denim Jeans" width="20%" />
+                <img
+                  [src]="product.product.url"
+                  alt="Denim Jeans"
+                  width="20%"
+                />
               </td>
               <td>
                 <h1>{{ product.product.name }}</h1>
               </td>
               <td>
-                <p class="price">${{ product.product.price * product.amount }}</p>
+                <p class="price">
+                  ${{ product.product.price * product.amount }}
+                </p>
               </td>
               <td>
                 <p>{{ product.product.description }}</p>
               </td>
             </tr>
           </table>
-            <input
-              type="number"
-              [(ngModel)]="product.amount"
-              formControlName="quantity"
-              min="0"
-              (change)="getAllPrice()"
-            />
-          </div>
+          <input
+            type="number"
+            [(ngModel)]="product.amount"
+            formControlName="quantity"
+            min="0"
+            (change)="getAllPrice()"
+          />
         </div>
-      </form>
-      <h1>Total: {{ amount }}</h1>
-        <!-- <div class="alert alert-danger" role="alert">
-    Cart is empty...
-    {{products}}
-  </div> -->
+      </div>
+    </form>
+    <h1>Total: {{ amount }}</h1>
   </div>
   <div class="col-6">
     <div class="">
       <form action="" [formGroup]="submitForm">
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-        <input formControlName="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="(minimum 3 characters)">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Address</label>
-        <input formControlName="address" type="text" class="form-control" id="exampleFormControlInput1" placeholder="(minimum 6 characters)">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Credit Card</label>
-        <input formControlName="credit" type="number" class="form-control" id="exampleFormControlInput1" placeholder="(16-digit number)">
-      </div>
-      <button class="btn btn-primary" (click)="submit()">Submit</button>
-    </form>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Full Name</label
+          >
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="(minimum 3 characters)"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Address</label
+          >
+          <input
+            formControlName="address"
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="(minimum 6 characters)"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Credit Card</label
+          >
+          <input
+            formControlName="credit"
+            type="number"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="(16-digit number)"
+          />
+        </div>
+        <button class="btn btn-primary" (click)="submit()">Submit</button>
+      </form>
     </div>
   </div>
 </div>
 
-
-
-
+<p *ngIf="amount==0" class="bg-info text-center p-5" >Cart is empty... </p>

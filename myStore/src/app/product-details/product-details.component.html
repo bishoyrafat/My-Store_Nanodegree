@@ -9,11 +9,11 @@
     <select name="" id="">
       <option *ngFor="let option of options" [value]="option">{{option}}</option>
     </select>
-    <p><button class="btn btn-primary mt-2">Add to Cart</button></p>
+    <p><button (cartBtn)="addToCArt($event)"
+      class="btn btn-primary mt-2">Add to Cart</button></p>
     <a routerLink="/">&larr; Back to product list</a>
   </div>
 </div>
 
 [data]="data"
-(cartBtn)="addToCArt($event)"
 (details)="productDetails($event)"

@@ -14,6 +14,10 @@ cartQuantity=0
     this.sharedService.currentData.subscribe((e:any)=>{
      console.log('header',e.length);
      this.cartQuantity=e.length
+
+     let amount :any= localStorage.getItem('amount')
+    //  console.log(amount)
+    //  this.cartQuantity = JSON.parse(amount)
    })
   }
 
