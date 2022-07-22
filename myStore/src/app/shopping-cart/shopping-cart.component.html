@@ -3,8 +3,8 @@
     <form [formGroup]="form" action="">
       <div class="card">
         <div class="product" *ngFor="let product of products">
-          <table>
-            <tr>
+          <table >
+            <tr class="">
               <td>
                 <img
                   [src]="product.product.url"
@@ -13,7 +13,7 @@
                 />
               </td>
               <td>
-                <h1>{{ product.product.name }}</h1>
+                <h3>{{ product.product.name }}</h3>
               </td>
               <td>
                 <p class="price">
@@ -33,9 +33,9 @@
             (change)="getAllPrice()"
           />
         </div>
+        <h1>Total: ${{ amount }}</h1>
       </div>
     </form>
-    <h1>Total: {{ amount }}</h1>
   </div>
   <div class="col-6">
     <div class="">
@@ -70,13 +70,13 @@
           >
           <input
             formControlName="credit"
-            type="number"
+            type="text"
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="(16-digit number)"
           />
         </div>
-        <button class="btn btn-primary" (click)="submit()">Submit</button>
+        <button [disabled]="submitForm.invalid" class="btn btn-primary" (click)="submit()">Submit</button>
       </form>
     </div>
   </div>

@@ -25,6 +25,7 @@ export class ShoppingCartComponent implements OnInit {
     credit: new FormControl('', [
       Validators.required,
       Validators.minLength(16),
+      Validators.maxLength(16),
     ]),
   });
   constructor(private sharedService: SharedService, private route: Router) {}
@@ -44,14 +45,7 @@ export class ShoppingCartComponent implements OnInit {
       return;
     } else {
       this.products.forEach((el: any, i: any) => {
-        console.log(el.product.price, el.amount, this.form.value.quantity);
         this.amount += el.product.price * el.amount;
-        if(this.amount===0){
-          console.log('zeroooooooooo')
-          localStorage.setItem('amount',JSON.stringify(this.amount))
-        }
-
-
       });
     }
   }

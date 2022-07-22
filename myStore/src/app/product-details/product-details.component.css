@@ -31,3 +31,6 @@ img{
   border-radius: 10px;
   float: right;
 }
+.itemDetail .body{
+  justify-content: center;
+}
