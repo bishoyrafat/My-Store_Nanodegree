@@ -39,8 +39,10 @@ export class ProductCardComponent implements OnInit  {
         isExists.amount = this.form.value.selection;
         this.cart = this.cart.filter(({ el }) => el.product.id !== item.id);
         this.cart.push({product:isExists, amount:this.form.value.selection})
+        alert('Product added successfully')
       } else {
         this.cart.push({product:item, amount:this.form.value.selection})
+        alert('Product added successfully')
       }
 
     this.sharedService.saveProduct(this.cart)
