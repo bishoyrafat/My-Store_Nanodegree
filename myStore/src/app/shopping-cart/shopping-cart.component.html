@@ -23,6 +23,7 @@
               <td>
                 <p>{{ product.product.description }}</p>
               </td>
+              <td><button (click)="removeProduct(product.product.id)" class="btn btn-warning">remove</button></td>
             </tr>
           </table>
           <input

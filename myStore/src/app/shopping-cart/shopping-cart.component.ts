@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../shared/shared.service';
+import { Iproduct } from './../shared/models/product.model';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,7 +11,7 @@ import { SharedService } from '../shared/shared.service';
 })
 export class ShoppingCartComponent implements OnInit {
   options = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  products: any = [];
+  products: any[] = [];
   amount = 0;
   form = new FormGroup({
     quantity: new FormControl(),
@@ -56,6 +57,16 @@ export class ShoppingCartComponent implements OnInit {
       this.route.navigate(['/confirmationmessage'], {
         queryParams: { price: this.amount },
       });
+    }
+  }
+  removeProduct(product: any) {
+    const index = this.products.findIndex((el:any) => {
+      return el.product.id === product
+    });
+    if(this.products.length === 0){
+      console.log(this.products)
+    }else{
+      this.products.splice(index,1)
     }
   }
 }
