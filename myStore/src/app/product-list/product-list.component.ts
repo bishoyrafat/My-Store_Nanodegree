@@ -2,6 +2,7 @@ import { SharedService } from './../shared/shared.service';
 import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Iproduct } from './../shared/models/product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,7 @@ export class ProductListComponent implements OnInit {
   data: any[] = [];
   cart: any[] = [];
   amountNo: any;
-  products = [];
+  products:Iproduct[] = [];
 
   constructor(
     private productsService: ProductsService,
