@@ -1,9 +1,9 @@
-<div  *ngIf="amount !==0" class="row">
+<div *ngIf="amount !== 0" class="row">
   <div class="col-6">
     <form [formGroup]="form" action="">
       <div class="card">
         <div class="product" *ngFor="let product of products">
-          <table >
+          <table>
             <tr class="">
               <td>
                 <img
@@ -26,11 +26,12 @@
             </tr>
           </table>
           <input
+            (ngModelChange)="product.amount = $event"
             type="number"
-            [(ngModel)]="product.amount"
             formControlName="quantity"
             min="0"
             (change)="getAllPrice()"
+            [(ngModel)]="product.amount"
           />
         </div>
         <h1>Total: ${{ amount }}</h1>
@@ -76,10 +77,16 @@
             placeholder="(16-digit number)"
           />
         </div>
-        <button [disabled]="submitForm.invalid" class="btn btn-primary" (click)="submit()">Submit</button>
+        <button
+          [disabled]="submitForm.invalid"
+          class="btn btn-primary"
+          (click)="submit()"
+        >
+          Submit
+        </button>
       </form>
     </div>
   </div>
 </div>
 
-<p *ngIf="amount==0" class="bg-info text-center p-5" >Cart is empty... </p>
+<p *ngIf="amount == 0" class="bg-info text-center p-5">Cart is empty...</p>
