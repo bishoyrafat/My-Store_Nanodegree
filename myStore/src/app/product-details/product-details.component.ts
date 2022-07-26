@@ -19,14 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let id = +this.activatedRoute.snapshot.params['id'];
     this.getAllProducts()
-     this.product = this.productsService.getAllProducts().find((el: any) => {
-     return el.id === id;
-    });
-    console.log(this.product);
-    this.data.push(this.product)
-    console.log(this.data)
     this.sharedService.currentData.subscribe((e:any)=>{
       console.log(e)
     })
@@ -40,7 +33,19 @@ export class ProductDetailsComponent implements OnInit {
 
 
 getAllProducts(){
-  console.log(this.productsService.getAllProducts())
+  this.productsService.getAllProducts().subscribe((data:any)=>{
+    this.data = data
+    console.log(this.data)
+    let id = +this.activatedRoute.snapshot.params['id'];
+    console.log(id)
+    console.log(this.data)
+     this.product = this.data.find((el: any) => {
+     return el.id === id;
+    });
+    this.data=[]
+        this.data.push(this.product)
+        console.log(data)
+  })
 }
 
 }
