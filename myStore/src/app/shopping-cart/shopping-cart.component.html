@@ -52,6 +52,13 @@
             id="exampleFormControlInput1"
             placeholder="(minimum 3 characters)"
           />
+          <small
+            class="text text-danger"
+            *ngIf="
+              submitForm.get('name')?.invalid && submitForm.get('name')?.touched
+            "
+            >Invalid input</small
+          >
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label"
@@ -64,6 +71,13 @@
             id="exampleFormControlInput1"
             placeholder="(minimum 6 characters)"
           />
+          <small
+            class="text text-danger"
+            *ngIf="
+              submitForm.get('address')?.invalid && submitForm.get('address')?.touched
+            "
+            >Invalid input</small
+          >
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label"
@@ -76,6 +90,13 @@
             id="exampleFormControlInput1"
             placeholder="(16-digit number)"
           />
+          <small
+            class="text text-danger"
+            *ngIf="
+              submitForm.get('credit')?.invalid && submitForm.get('credit')?.touched
+            "
+            >Invalid input</small
+          >
         </div>
         <button
           [disabled]="submitForm.invalid"
