@@ -30,25 +30,7 @@ export class ProductCardComponent implements OnInit  {
   ngOnInit(): void {
   }
   addToCart(item:any){
-
-      let isExists = this.cart.find((el:any)=> {
-        return el.product.id == item.id;
-      });
-
-      if(isExists != undefined) {
-        isExists.amount = this.form.value.selection;
-        this.cart = this.cart.filter(({ el }) => el.product.id !== item.id);
-        this.cart.push({product:isExists, amount:this.form.value.selection})
-        alert('Product added successfully')
-      } else {
-        this.cart.push({product:item, amount:this.form.value.selection})
-        alert('Product added successfully')
-      }
-
-    this.sharedService.saveProduct(this.cart)
-     this.sharedService.currentData.subscribe((e:any)=>{
-      console.log(this.cart);
-    })
+    this.cartBtn.emit(item)
   }
 
   productDetails(e:any){

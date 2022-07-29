@@ -68,5 +68,14 @@ export class ShoppingCartComponent implements OnInit {
     }else{
       this.products.splice(index,1)
     }
+    this.updateTotalAmount(this.products)
+  }
+  updateTotalAmount(products: any) {
+    this.amount = 0
+    this.products.forEach((el: any) => {
+      console.log(el);
+      this.amount += (el.amount * el.product.price)
+    })
+    alert('product removed successfully ')
   }
 }

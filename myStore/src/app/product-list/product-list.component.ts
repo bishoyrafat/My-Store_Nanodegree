@@ -3,6 +3,7 @@ import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Iproduct } from './../shared/models/product.model';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -14,19 +15,36 @@ export class ProductListComponent implements OnInit {
   cart: any[] = [];
   amountNo: any;
   products:Iproduct[] = [];
+    form:FormGroup=new FormGroup({
+    selection:new FormControl(1)
+  })
 
   constructor(
     private productsService: ProductsService,
     private sharedService: SharedService,
     private route: Router
-  ) {}
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.getAllProducts();
   }
 
-  addToCArt(e: any) {
-    console.log(e);
+  addToCArt(item: any) {
+    let isExists = this.cart.find((el:any)=> {
+      return el.product.id == item.id;
+    });
+    if(isExists != undefined) {
+      isExists.amount = this.form.value.selection;
+      this.cart = this.cart.filter(({ el }) => el.product.id !== item.id);
+      this.cart.push({product:isExists, amount:this.form.value.selection})
+      alert('Product added successfully')
+    } else {
+      this.cart.push({product:item, amount:this.form.value.selection})
+      alert('Product added successfully')
+    }
+    this.sharedService.saveProduct(this.cart)
   }
 
   productDetails(productId: any) {
